@@ -603,11 +603,15 @@ export class GlobalVarsService {
     this.localNode = this.backendApi.GetStorage(this.backendApi.LastLocalNodeKey);
 
     if (!this.localNode) {
-      const hostname = (window as any).location.hostname;
-      if (environment.production) {
-        this.localNode = `api.${hostname}`;
+      if (environment.node) {
+        this.localNode = environment.node;
       } else {
-        this.localNode = `${hostname}:17001`;
+        const hostname = (window as any).location.hostname;
+        if (environment.production) {
+          this.localNode = `api.${hostname}`;
+        } else {
+          this.localNode = `${hostname}:17001`;
+        }
       }
 
       this.backendApi.SetStorage(this.backendApi.LastLocalNodeKey, this.localNode);
