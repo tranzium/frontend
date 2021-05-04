@@ -1,0 +1,85 @@
+<div class="d-flex flex-column js-feed-post">
+  <div class="feed-post__container d-flex justify-content-left w-100 px-15px pb-15px pt-15px">
+
+    <!-- Avatar -->
+    <div class="feed-post__avatar-container">
+      <a
+        class="feed-post__avatar br-12px"
+        [style.background-image]="'url(' + creator.image + ')'"
+        [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, creator.name]"
+        queryParamsHandling="merge"
+      ></a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="w-100">
+      <div class="d-flex align-items-center">
+        <!-- Username-->
+        <a
+          class="fc-default font-weight-bold"
+          [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, creator.name]"
+          queryParamsHandling="merge"
+        >
+          {{ creator.name }}
+        </a>
+
+        <span *ngIf="creator.verified" class="ml-1 text-primary">
+          <i class="fas fa-check-circle fa-md align-middle"></i>
+        </span>
+
+        <!-- Coin price-->
+        <!-- <a
+          style="padding: 3px"
+          class="ml-2 fs-12px font-weight-bold px-2 feed-post__coin-price-holder br-12px"
+          [routerLink]="AppRoutingModule.buyCreatorPath(creator.name)"
+          queryParamsHandling="merge"
+        >
+          <span class="text-grey5">
+            ~{{ globalVars.nanosToUSD(creator.CoinPriceBitCloutNanos, 2) }}
+          </span>
+
+          &lt;!&ndash; Buy link &ndash;&gt;
+          Buy
+        </a> -->
+
+        <!-- Desktop follow button-->
+        <!--
+        <follow-button
+          class="ml-10px fs-12px d-lg-block d-none text-grey5"
+          [displayAsLink]="true"
+          [followLinkClass]="'link&#45;&#45;unstyled'"
+          [followedPubKeyBase58Check]="creator.PublicKeyBase58Check"
+        ></follow-button>
+        -->
+      </div>
+
+      <!-- Mobile follow button-->
+     <!--
+     <div class="mt-5px d-lg-none text-grey5">
+        <follow-button
+          class="fs-12px"
+          [displayAsLink]="true"
+          [followLinkClass]="'link--unstyled'"
+          [followedPubKeyBase58Check]="creator.PublicKeyBase58Check"
+        ></follow-button>
+      </div>
+      -->
+
+      <!-- Content -->
+      <div
+        class="roboto-regular mt-1"
+        style="
+          overflow-wrap: anywhere;
+          -ms-word-break: break-all;
+          word-break: break-all;
+          word-break: break-word;
+          outline: none;
+        "
+        [innerHTML]="creator.desc | sanitizeAndAutoLink"
+        [routerLink]="['/' + globalVars.RouteNames.USER_PREFIX, creator.name]"
+        queryParamsHandling="merge"
+      ></div>
+
+    </div>
+  </div>
+</div>

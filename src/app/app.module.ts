@@ -102,6 +102,9 @@ import { SignUpComponent } from "./sign-up/sign-up.component";
 import { WalletActionsDropdownComponent } from "./wallet/wallet-actions-dropdown/wallet-actions-dropdown.component";
 import { PickACoinPageComponent } from "./pick-a-coin-page/pick-a-coin-page.component";
 import { CreatorDiamondsComponent } from './creator-profile-page/creator-diamonds/creator-diamonds.component';
+import { SearchPageComponent } from "./search-page/search-page.component";
+import { SearchPageFeedComponent } from "./search-page/search-page-feed/search-page-feed.component";
+import { FeedCreatorComponent } from "./feed/feed-creator/feed-creator.component";
 
 @NgModule({
   declarations: [
@@ -116,6 +119,7 @@ import { CreatorDiamondsComponent } from './creator-profile-page/creator-diamond
     LeftBarComponent,
     RightBarCreatorsComponent,
     FeedCreatePostComponent,
+    FeedCreatorComponent,
     FeedPostComponent,
     FeedPostDropdownComponent,
     FeedPostIconRowComponent,
@@ -186,6 +190,8 @@ import { CreatorDiamondsComponent } from './creator-profile-page/creator-diamond
     WalletActionsDropdownComponent,
     PickACoinPageComponent,
     CreatorDiamondsComponent,
+    SearchPageComponent,
+    SearchPageFeedComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,7 @@ import { GetStarterBitcloutPageComponent } from "./get-starter-bitclout-page/get
 import { WalletComponent } from "./wallet/wallet.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
 import { PickACoinPageComponent } from "./pick-a-coin-page/pick-a-coin-page.component";
+import { SearchPageComponent } from "./search-page/search-page.component";
 
 class RouteNames {
   // Not sure if we should have a smarter schema for this, e.g. what happens if we have
@@ -60,10 +61,12 @@ class RouteNames {
   public static ADMIN = "admin";
   public static GET_STARTER_BITCLOUT = "get-starter-bitclout";
   public static LANDING = "/";
+  public static SEARCH_PREFIX = "s";
 }
 
 const routes: Routes = [
   { path: "", component: LandingPageComponent, pathMatch: "full" },
+  { path: RouteNames.SEARCH_PREFIX + "/:query", component: SearchPageComponent, pathMatch: "full" },
   { path: RouteNames.BROWSE, component: BrowsePageComponent, pathMatch: "full" },
   { path: RouteNames.CREATORS, component: CreatorsLeaderboardPageComponent, pathMatch: "full" },
   { path: RouteNames.USER_PREFIX + "/:username", component: CreatorProfilePageComponent, pathMatch: "full" },
@@ -122,6 +125,10 @@ class AppRoutingModule {
         setTimeout(() => viewportScroller.scrollToPosition([0, 0]), 100);
       }
     });
+  }
+
+  static searchPath(query: string): string {
+    return ["", RouteNames.SEARCH_PREFIX, query].join("/");
   }
 
   static transferCreatorPath(username: string): string {

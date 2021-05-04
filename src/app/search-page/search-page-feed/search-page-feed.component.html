@@ -1,0 +1,7 @@
+<!-- Posts -->
+<simple-center-loader [height]="200" *ngIf="loadingFirstPage && datasource.adapter.isLoading"></simple-center-loader>
+<div #uiScroll *uiScroll="let creator of datasource" class="border-bottom border-color-grey">
+  <feed-creator
+    [creator]="creator"
+  ></feed-creator>
+</div>
